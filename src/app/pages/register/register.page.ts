@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { User } from 'src/app/models/User';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -10,8 +14,20 @@ import { Router } from '@angular/router';
 })
 
 export class RegisterPage implements OnInit {
+  
 
+  user: User = new User;
+  name = '';
+  lastName = '';
+  email = '';
+  password = '';
+  years = '';
+  typeUx = '';
   constructor(
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private alertController: AlertController,
+    private authService: AuthService,
     private afAuth: AngularFireAuth,
     private router: Router
   ) { }

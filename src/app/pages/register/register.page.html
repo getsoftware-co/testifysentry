@@ -1,13 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <br>
+  <br>
+  <br>
+  <br>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Registro de usuarios</ion-card-title>
+      
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="form" novalidate (ngSubmit)="register()">
+        <ion-list style="padding: 15px;">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">register</ion-title>
-    </ion-toolbar>
-  </ion-header>
+          <ion-item style="width: 60%;">
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input [(ngModel)]="name" placeholder="Ingrese un nombre" formControlName="name"></ion-input>
+          </ion-item>
+
+          <ion-item style="width: 60%;">
+            <ion-label position="stacked">Usuario</ion-label>
+            <ion-input [(ngModel)]="email" placeholder="Ingrese un usuario" formControlName="email"></ion-input>
+          </ion-item>
+
+          <ion-item style="width: 60%;">
+            <ion-label position="stacked">Contraseña</ion-label>
+            <ion-input [(ngModel)]="password" type="password" placeholder="Ingrese una contraseña" formControlName="password"></ion-input>
+          </ion-item>
+
+          <ion-button type="submit" >Registrarse</ion-button>
+          <ion-button routerLink="/login" type="button">Ya estoy registrado</ion-button>
+        </ion-list>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

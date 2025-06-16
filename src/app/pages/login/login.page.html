@@ -1,19 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-     
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <br>
+  <br>
+  <br>
+  <br>
   <ion-card>
     <ion-card-header>
       <ion-card-title>Ingreso de usuarios</ion-card-title>
       
     </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="form" novalidate (ngSubmit)="login()">
+        <ion-list>
+          <br>
+          <br>
+          <ion-item style="width: 60%;">
+            <ion-label position="stacked">Usuario</ion-label>
+            <ion-input placeholder="Ingrese usuario o email" formControlName="email"></ion-input>
+          </ion-item>
+
+          <ion-item style="width: 60%;">
+            <ion-label position="stacked">Contraseña</ion-label>
+            <ion-input type="password" placeholder="Ingrese contraseña" formControlName="password"></ion-input>
+          </ion-item>
+          <p routerLink="/recoverypass" class="recoverypass-title">Olvide mi contraseña</p>
+          <br>
+          <br>
+
+          <ion-button color="success" type="submit" >Iniciar Sesión</ion-button>
+          <ion-button routerLink="/register" type="button">Registrarse</ion-button>
+        </ion-list>
+
+      </form>
+    </ion-card-content>
   </ion-card>
 </ion-content>
