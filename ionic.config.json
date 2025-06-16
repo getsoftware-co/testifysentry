@@ -1,0 +1,7 @@
+{
+  "name": "testifysentry",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
