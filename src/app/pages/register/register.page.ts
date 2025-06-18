@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { User } from 'src/app/models/User';
@@ -14,15 +14,18 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 
 export class RegisterPage implements OnInit {
-  
 
-  user: User = new User;
+  //user: User;
   name = '';
-  lastName = '';
   email = '';
   password = '';
-  years = '';
-  typeUx = '';
+  
+  registerForm = this.formBuilder.group({
+    name: ['', [Validators.required]],
+    email: ['', [Validators.email, Validators.required]],
+    password: ['', [ Validators.min(8), Validators.required]]
+  });
+ 
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -32,9 +35,9 @@ export class RegisterPage implements OnInit {
     private router: Router
   ) { }
 
-  async register(email: string, password: string) {
+  async register() {
     try {
-      await this.afAuth.createUserWithEmailAndPassword(email, password);
+      await this.afAuth.createUserWithEmailAndPassword(this.email, this.password);
       this.router.navigateByUrl('/login');
     } catch (e) {
     }
